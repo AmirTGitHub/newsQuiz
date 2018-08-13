@@ -1,3 +1,11 @@
+@font-face {
+  font-family: IranSans_bold;
+  src: url(./assets/fonts/IRANSans_Light.ttf);
+}
+@font-face {
+  font-family: IranSans_light;
+  src: url(./assets/fonts/IRANSans_Light.ttf);
+}
 .App {
   width: 90%;
   margin: auto;
@@ -34,4 +42,20 @@
 
 .posts {
   padding: 10px;
+}
+.question {
+  font-family: IranSans_Bold;
+  text-align: right;
+}
+#body {
+  font-family: IranSans_light;
+  text-align: right;
+  color: #222;
+  height: 300px;
+}
+
+.answer {
+  font-family: IranSans_light;
+  text-align: right;
+  color: #222;
 }

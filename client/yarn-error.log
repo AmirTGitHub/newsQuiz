@@ -2,13 +2,13 @@ Arguments:
   /usr/local/bin/node /usr/local/bin/yarn start
 
 PATH: 
-  /Users/Amir/Desktop/newsQuiz/api/node_modules/.bin:/Users/Amir/.config/yarn/link/node_modules/.bin:/Users/Amir/Desktop/newsQuiz/api/node_modules/.bin:/Users/Amir/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Users/Amir/Desktop/newsQuiz/api/node_modules/.bin:/Users/Amir/.config/yarn/link/node_modules/.bin:/Users/Amir/Desktop/newsQuiz/api/node_modules/.bin:/Users/Amir/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/ImageMagick/bin
+  /Users/videoedtitiranwire/Desktop/newsQuiz/api/node_modules/.bin:/Users/videoedtitiranwire/.config/yarn/link/node_modules/.bin:/Users/videoedtitiranwire/Desktop/newsQuiz/api/node_modules/.bin:/Users/videoedtitiranwire/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Users/videoedtitiranwire/Desktop/newsQuiz/api/node_modules/.bin:/Users/videoedtitiranwire/.config/yarn/link/node_modules/.bin:/Users/videoedtitiranwire/Desktop/newsQuiz/api/node_modules/.bin:/Users/videoedtitiranwire/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  8.4.0
+  8.9.0
 
 Platform: 
   darwin x64
@@ -31,7 +31,8 @@ npm manifest:
       "build": "react-scripts build",
       "test": "react-scripts test --env=jsdom",
       "eject": "react-scripts eject"
-    }
+    },
+    "proxy": "http://localhost:5000/"
   }
 
 yarn manifest: 
@@ -45,13 +46,13 @@ Trace:
   Exit code: 127
   Command: sh
   Arguments: -c react-scripts start
-  Directory: /Users/Amir/Desktop/newsQuiz/client
+  Directory: /Users/videoedtitiranwire/Desktop/newsQuiz/client
   Output:
   
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
       at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
       at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:125:13)
-      at ChildProcess.emit (events.js:213:7)
-      at maybeClose (internal/child_process.js:927:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

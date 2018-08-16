@@ -1,0 +1,29 @@
+{
+  "title": "amir",
+  "body": "new test by postman",
+  "quiz": [
+    {
+      "question": "this is a test"
+    },
+    {
+      "answers": [
+        {
+          "answer": "this is test",
+          "is_right": true
+        },
+        {
+          "answer": "this is test 2",
+          "is_right": false
+        },
+        {
+          "answer": "this is test 3",
+          "is_right": false
+        },
+        {
+          "answer": "this is test 4",
+          "is_right": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const dbController = require('../controllers/dbController')
+const dbController = require("../controllers/dbController");
 
+router.get("/hello", dbController.homepage);
+router.get("/quiz", dbController.getQuiz);
+router.post("/quiz", dbController.postQuiz);
 
-router.get('/hello', dbController.homepage)
-
-
-module.exports = router
+module.exports = router;

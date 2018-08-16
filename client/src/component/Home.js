@@ -1,89 +1,119 @@
-import React, { Component } from "react";
-import { Col, Button } from "reactstrap";
+import React, { Component, Fragment } from "react";
+import CreateQuiz from "./CreateQuiz";
 import CreatePoll from "./CreatePoll";
+import Quiz from "./Quiz";
 
 export default class Home extends Component {
   state = {
-    quizCounter: 1,
-    questions: [],
     counter: 1,
     answers: [],
-    correctAnswer: null
+    question: "",
+    answer0: "",
+    answer1: "",
+    answer2: "",
+    answer3: "",
+    correctAnswer: "",
+    saved: false,
+    allAnswers: [],
+    allDataFromDB: [],
+    title: "",
+    body: ""
   };
-  addQuestions = () => {
-    this.setState({
-      quizCounter: this.state.quizCounter + 1,
-      questions: [...new Array(this.state.quizCounter)]
-    });
-  };
-  addAnswer = () => {
-    this.setState({
-      counter: this.state.counter + 1,
-      answers: [...new Array(this.state.counter)]
-    });
-  };
+  componentDidMount() {
+    this.getData();
+  }
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
   correctAnswer = event => {
+    if (event.target.checked) {
+      this.setState({
+        correctAnswer: event.target.name
+      });
+    }
+  };
+  save = event => {
+    event.preventDefault();
     this.setState({
-      correctAnswer: event.target.name
+      saved: true
+    });
+    const { answer0, answer1, answer2, answer3, correctAnswer } = this.state;
+    this.setState({
+      allAnswers: this.state.allAnswers.push(
+        {
+          answer: answer0,
+          is_right: correctAnswer === "answer0" ? true : false
+        },
+        {
+          answer: answer1,
+          is_right: correctAnswer === "answer1" ? true : false
+        },
+        {
+          answer: answer2,
+          is_right: correctAnswer === "answer2" ? true : false
+        },
+        {
+          answer: answer3,
+          is_right: correctAnswer === "answer3" ? true : false
+        }
+      )
+    });
+    this.saveQuizToDB();
+    this.getData();
+  };
+  AddAnswer = () => {
+    this.setState({
+      counter: this.state.counter + 1,
+      answers: [...new Array(this.state.counter)]
     });
   };
-  onSubmit = () => {
-    console.log(this.state);
-    this.setState({
-      counter: 1,
-      answers: [],
-      body: "",
-      correctAnswer: null,
-      answer0: "",
-      answer1: "",
-      answer2: "",
-      answer3: "",
-      answer4: "",
-      answer5: "",
-      photo: ""
+
+  saveQuizToDB = async () => {
+    const bodyToSend = {
+      title: this.state.title,
+      body: this.state.body,
+      quiz: {
+        question: this.state.question,
+        answers: this.state.allAnswers
+      }
+    };
+    await fetch("/api/quiz", {
+      method: "POST",
+      headers: {
+        "content-type": "application/JSON"
+      },
+      body: JSON.stringify(bodyToSend)
     });
   };
+
+  getData = async () => {
+    this.setState({
+      saved: false
+    });
+    const fetchData = await fetch("/api/quiz");
+    const allQuiz = await fetchData.json();
+    this.setState({
+      allDataFromDB: allQuiz,
+      saved: true
+    });
+  };
+
   render() {
-    const { questions } = this.state;
+    const { saved, answers, allDataFromDB } = this.state;
     return (
-      <div>
-        <Col>
-          <Col sm={8} className="text-center">
-            <Button
-              type="submit"
-              color="success"
-              block
-              onClick={this.addQuestions}
-            >
-              Add Quiz
-            </Button>
-          </Col>
-          {questions.map((item, index) => {
-            return (
-              <CreatePoll
-                questionCounter={this.state.quizCounter}
-                answerCounter={this.state.counter}
-                key={index + 1}
-                answers={this.state.answers}
-                onSubmit={this.onSubmit}
-                onChange={this.onChange}
-                addAnswer={this.addAnswer}
-                correctAnswer={this.correctAnswer}
-              />
-            );
-          })}
-        </Col>
-        <Col sm={8} className="text-center">
-          <Button color="warning" block onClick={this.onSubmit}>
-            save
-          </Button>
-        </Col>
-      </div>
+      <Fragment>
+        <CreateQuiz onChange={this.onChange} />
+        <CreatePoll
+          save={this.save}
+          onChange={this.onChange}
+          correctAnswer={this.correctAnswer}
+          AddAnswer={this.AddAnswer}
+          answers={answers}
+        />
+        {saved ? <Quiz quiz={allDataFromDB} /> : null}
+      </Fragment>
     );
   }
 }

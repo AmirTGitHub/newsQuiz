@@ -1,5 +1,9 @@
-package-lock.json
+api/package-lock.json
+client/package-lock.json
+client/yarn-error.log
+api/yarn-error.log
 yarn.lock
 client/node_modules/
 api/node_modules/
 .DS_Store
+api/variable.env

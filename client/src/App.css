@@ -1,14 +1,14 @@
 @font-face {
   font-family: IranSans_bold;
-  src: url(./assets/fonts/IRANSans_Light.ttf);
+  src: url(./assets/fonts/IRANSans_Bold.ttf);
 }
 @font-face {
   font-family: IranSans_light;
   src: url(./assets/fonts/IRANSans_Light.ttf);
 }
-.App {
-  width: 90%;
-  margin: auto;
+body {
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -40,22 +40,54 @@
   }
 }
 
-.posts {
-  padding: 10px;
-}
-.question {
-  font-family: IranSans_Bold;
-  text-align: right;
-}
-#body {
+.input {
   font-family: IranSans_light;
   text-align: right;
   color: #222;
+}
+
+.label {
+  font-family: IranSans_bold;
+  text-align: right;
+  color: black;
+}
+
+.question {
   height: 300px;
 }
 
-.answer {
+.quiz-intro-title {
+  font-family: IranSans_bold;
+  text-align: right;
+}
+.quiz-intro-body {
   font-family: IranSans_light;
   text-align: right;
-  color: #222;
+}
+.quiz--title {
+  font-family: IranSans_bold;
+  text-align: right;
+}
+
+.answer {
+  width: 100%;
+  margin: 0 auto;
+}
+.answer--btn {
+  width: 100%;
+  font-family: IranSans_light;
+  background-color: rgb(63, 123, 155);
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+.answer--check {
+  background-color: rgb(110, 140, 157);
+}
+.answer--true {
+  background-color: rgb(17, 162, 106);
+}
+
+.answer--false {
+  background-color: rgb(159, 96, 85);
 }

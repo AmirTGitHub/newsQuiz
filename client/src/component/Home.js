@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import CreateQuiz from "./CreateQuiz";
 import CreatePoll from "./CreatePoll";
 import Quiz from "./Quiz";
+import Login from "./authentication/Login";
+import Register from "./authentication/Register";
 
 export default class Home extends Component {
   state = {
@@ -103,8 +106,10 @@ export default class Home extends Component {
   render() {
     const { saved, answers, allDataFromDB } = this.state;
     return (
-      <Fragment>
-        <CreateQuiz onChange={this.onChange} />
+      <BrowserRouter>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        {/* <CreateQuiz onChange={this.onChange} />
         <CreatePoll
           save={this.save}
           onChange={this.onChange}
@@ -112,8 +117,8 @@ export default class Home extends Component {
           AddAnswer={this.AddAnswer}
           answers={answers}
         />
-        {saved ? <Quiz quiz={allDataFromDB} /> : null}
-      </Fragment>
+        {saved ? <Quiz quiz={allDataFromDB} /> : null} */}
+      </BrowserRouter>
     );
   }
 }

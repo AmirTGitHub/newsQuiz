@@ -4,18 +4,25 @@ import PostForm from "./component/PostForm";
 import Home from "./component/Home";
 import Login from "./component/authentication/Login";
 import Register from "./component/authentication/Register";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import logo from "./logo.svg";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser } from "./actions/authAction";
 import "./App.css";
 
+///chek for token
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  //decode token and get user info
+  const decoded = jwt_decode(localStorage.jwtToken);
+  // set user and is authenticated
+  store.dispatch(setCurrentUser(decoded));
+}
 class App extends Component {
   render() {
     return (
-      // <Provider store={store}>
-      //   <Home />
-      // </Provider>
       <Provider store={store}>
         <BrowserRouter>
           <div>

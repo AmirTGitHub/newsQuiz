@@ -1,58 +1,48 @@
 import React, { Component } from "react";
-import axios from "axios";
-
+import LoginForm from "../molecules/LoginForm";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/authAction";
 class Login extends Component {
   state = {
     email: "",
     password: "",
     errors: {}
   };
-  onChange = event => {
+  onChanged = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
-  onChange = event => {
+  onSubmit = event => {
     event.preventDefault();
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.loginUser(user, this.props.history);
   };
   render() {
     let { email, password } = this.state;
     return (
       <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">Sign in to your account</p>
-              <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className="form-control form-control-lg"
-                    placeholder="Email Address"
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
-              </form>
-            </div>
-          </div>
-        </div>
+        <form onSubmit={this.onSubmit}>
+          <LoginForm
+            emailValue={email}
+            passValue={password}
+            onChange={this.onChanged}
+            errors={this.props.error}
+          />
+        </form>
       </div>
     );
   }
 }
-
-export default Login;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  error: state.errors
+});
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(withRouter(Login));

@@ -4,6 +4,8 @@ import PostForm from "./component/PostForm";
 import Home from "./component/Home";
 import Login from "./component/authentication/Login";
 import Register from "./component/authentication/Register";
+import Dashboard from "./component/Dashboard";
+import CreatePoll from "./component/create poll/CreatePoll";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -28,6 +30,8 @@ class App extends Component {
           <div>
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/create-poll" component={CreatePoll} />
           </div>
           {/* <CreateQuiz onChange={this.onChange} />
         <CreatePoll

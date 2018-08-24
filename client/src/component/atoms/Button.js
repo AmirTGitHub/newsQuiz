@@ -1,5 +1,5 @@
 import React from "react";
 const Button = props => {
-  return <input type={props.type} className="btn btn-info btn-block mt-4" />;
+  return <button className="btn btn-info btn-block mt-4">{props.type}</button>;
 };
 export default Button;

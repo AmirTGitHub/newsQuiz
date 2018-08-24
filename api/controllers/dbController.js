@@ -10,7 +10,7 @@ exports.postQuiz = async (req, res) => {
     const newQuiz = new Quiz(req.body);
     await newQuiz.save();
   } catch (err) {
-    console.log(err);
+    res.status(400).json({ error: err });
   }
 };
 
@@ -19,6 +19,6 @@ exports.getQuiz = async (req, res) => {
     const getQuiz = await Quiz.find();
     res.json(getQuiz);
   } catch (err) {
-    console.log(err);
+    res.status(400).json({ error: err });
   }
 };

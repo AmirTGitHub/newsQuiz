@@ -9,6 +9,7 @@
 body {
   max-width: 80%;
   margin: 0 auto;
+  text-align: right;
 }
 
 .App-logo {
@@ -31,29 +32,20 @@ body {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .input {
   font-family: IranSans_light;
-  text-align: right;
+  direction: rtl;
   color: #222;
 }
 
 .label {
   font-family: IranSans_bold;
-  text-align: right;
+  direction: rtl;
+  padding-right: 5em;
   color: black;
 }
-
 .question {
-  height: 300px;
+  padding-top: 80px;
 }
 
 .quiz-intro-title {

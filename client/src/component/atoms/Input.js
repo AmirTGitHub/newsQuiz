@@ -3,11 +3,12 @@ import React from "react";
 const Input = props => {
   return (
     <div className="form-group">
+      <label className="label">{props.label}</label>
       <input
         type={props.type}
         className={
           !props.errors
-            ? "form-control form-control-lg"
+            ? "input form-control form-control-lg"
             : "form-control form-control-lg is-invalid"
         }
         placeholder={props.placeholder}
